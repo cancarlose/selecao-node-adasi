@@ -23,7 +23,7 @@ Certifique-se de ter o Yarn instalado.
 1. Navegue até o diretório do projeto no terminal.
 2. Execute o comando para inicializar o Yarn: `yarn init` `yarn`.
 3. Execute o início das migrations para o banco de dados com `yarn run migration:run`.
-4. Execute o início o servidor com `yarn run start`. Isso abrirá o servidor na porta 4000.
+4. Execute o início do servidor com `yarn run start`. Isso abrirá o servidor na porta 4000.
 5. Acesse o aplicativo em seu navegador, geralmente em `http://localhost:4000`.
 6. Acesse com uma ferramenta de desenvolvimento de API, passando o diretório `http://localhost:4000/`.
 
