@@ -69,6 +69,8 @@ Esses testes fornecem uma maneira automatizada de garantir que a API funcione co
 | `/tarefa/id`   | Endpoint para manipular dados de tarefas     | PUT, DELETE |
 | `/atividade/id`| Endpoint para manipular dados de atividades  | PUT, DELETE |
 
+## Exemplo 
+
 ### GET /estudante
 
 Este endpoint retorna uma lista de todos os estudantes registrados no sistema.
