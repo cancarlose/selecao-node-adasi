@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 const { DataSource } = require("typeorm");
+
 dotenv.config();
 
 const portString = process.env.DB_PORT;
@@ -24,8 +25,8 @@ PostgresDataSource.initialize()
   .then(() => {
     console.log("Data Source has been initialized!");
   })
-  .catch((err) => {
-    console.error("Error during Data Source initialization", err);
+  .catch((error: any) => {
+    console.error("Error during Data Source initialization", error);
   });
 
 module.exports = PostgresDataSource;
