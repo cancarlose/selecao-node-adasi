@@ -14,6 +14,6 @@
     "emitDecoratorMetadata": true
   },
   "include": ["src/**/*.ts", "src/app.mjs", "src/**/*.ts",
-  "src/__tests__/**/*.ts", "config.ts"],
+  "src/__tests__/**/*.ts", "src/config/config.ts", "src/migrations/1711501252564-students.ts", "src/migrations/1711501276916-activities.ts", "src/migrations/1711501276915-tasks.ts", "src/migrations/1711501252563-courses.ts"],
   "exclude": ["node_modules"]
 }

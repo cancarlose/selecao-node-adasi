@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Estudante } from "./studant";
+import { Estudante } from "./student";
 import { Tarefa } from "./task";
 
 @Entity("Atividade")

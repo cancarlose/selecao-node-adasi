@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Curso } from '../models/course';
-import { Estudante } from '../models/studant';
+import { Estudante } from '../models/student';
 
 export const createEstudanteController = async (req: Request, res: Response) => {
   try {

@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/app.ts",
-    "create-database": "",
-    "generate-migration": "",
-    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d ./config.ts",
-    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d ./config.ts",
-    "typeorm": "yarn typeorm schema:sync -d src/config/datasource.ts"
+    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d src/config/config.ts",
+    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d src/config/config.ts"
   },
   "keywords": [],
   "license": "ISC",

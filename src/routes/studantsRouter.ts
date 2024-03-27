@@ -4,7 +4,7 @@ import {
   deleteEstudanteController,
   listEstudantesController,
   updateEstudanteController
-} from '../controller/studantController';
+} from '../controller/studentController';
 
 const router = express.Router();
 

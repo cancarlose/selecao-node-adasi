@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Estudante } from "./studant";
+import { Estudante } from "./student";
 
 @Entity("Curso")
 export class Curso extends BaseEntity {
