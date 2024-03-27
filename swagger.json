@@ -1,0 +1,54 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Documentação da API",
+    "description": "Documentação da API para a minha aplicação",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/estudante": {
+      "get": {
+        "summary": "Listar todos os estudantes",
+        "description": "Retorna uma lista de todos os estudantes",
+        "responses": {
+          "200": {
+            "description": "Lista de estudantes recuperada com sucesso"
+          }
+        }
+      }
+    },
+    "/curso": {
+      "get": {
+        "summary": "Listar todos os cursos",
+        "description": "Retorna uma lista de todos os cursos",
+        "responses": {
+          "200": {
+            "description": "Lista de cursos recuperada com sucesso"
+          }
+        }
+      }
+    },
+    "/tarefa": {
+      "get": {
+        "summary": "Listar todas as tarefas",
+        "description": "Retorna uma lista de todas as tarefas",
+        "responses": {
+          "200": {
+            "description": "Lista de tarefas recuperada com sucesso"
+          }
+        }
+      }
+    },
+    "/atividade": {
+      "get": {
+        "summary": "Listar todas as atividades",
+        "description": "Retorna uma lista de todas as atividades",
+        "responses": {
+          "200": {
+            "description": "Lista de atividades recuperada com sucesso"
+          }
+        }
+      }
+    }
+  }
+}
