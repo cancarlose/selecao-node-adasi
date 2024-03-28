@@ -10,5 +10,5 @@ export class Curso extends BaseEntity {
   nome!: string;
 
   @OneToMany(() => Estudante, estudante => estudante.curso)
-  estudantes!: Estudante[];
+  estudantes!: Estudante;
 }

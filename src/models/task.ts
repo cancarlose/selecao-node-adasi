@@ -10,5 +10,5 @@ export class Tarefa extends BaseEntity {
   nome!: string;
 
   @OneToMany(() => Atividade, atividade => atividade.tarefa)
-  atividades!: Atividade[];
+  atividades!: Atividade;
 }

@@ -9,23 +9,23 @@ export class Atividade extends BaseEntity {
   nome: any;
 
   @ManyToOne(() => Tarefa, tarefa => tarefa.atividades)
-  tarefa!: Tarefa[];
+  tarefa!: Tarefa;
 
   @ManyToOne(() => Estudante, estudante => estudante.atividades)
   estudante!: Estudante;
 
   @Column({ type: "date" })
-  data!: Date;
+  data!: string;
 
   @Column({ type: "time" })
-  horaAgendamentoInicio!: Date;
+  horaAgendamentoInicio!: string;
 
   @Column({ type: "time" })
-  horaAgendamentoTermino!: Date;
+  horaAgendamentoTermino!: string;
 
   @Column({ type: "time", nullable: true })
-  horaInicio!: Date;
+  horaInicio!: string;
 
   @Column({ type: "time", nullable: true })
-  horaTermino!: Date;
+  horaTermino!: string;
 }

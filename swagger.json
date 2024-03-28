@@ -461,7 +461,7 @@
         "type": "object",
         "properties": {
           "cpf": {
-            "type": "123.456.789-10",
+            "type": "string",
             "description": "CPF do estudante"
           },
           "nome": {
@@ -473,7 +473,7 @@
             "description": "ID do curso associado ao estudante"
           },
           "matricula": {
-            "type": "1234-5",
+            "type": "string",
             "description": "Matrícula do estudante"
           }
         },

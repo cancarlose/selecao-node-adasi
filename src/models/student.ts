@@ -21,5 +21,5 @@ export class Estudante extends BaseEntity {
   matricula!: string;
 
   @OneToMany(() => Atividade, atividade => atividade.estudante)
-  atividades!: Atividade[];
+  atividades!: Atividade;
 }
