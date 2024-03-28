@@ -6,6 +6,109 @@
     "version": "1.0.0"
   },
   "paths": {
+    "/curso": {
+      "get": {
+        "summary": "Listar todos os cursos",
+        "description": "Retorna uma lista de todos os cursos",
+        "responses": {
+          "200": {
+            "description": "Lista de cursos recuperada com sucesso"
+          }
+        }
+      },
+      "post": {
+        "summary": "Criar um novo curso",
+        "description": "Cria um novo curso com os dados fornecidos",
+        "responses": {
+          "201": {
+            "description": "Curso criado com sucesso"
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CursoInput"
+              }
+            }
+          }
+        }
+      },
+      "/{id}": {
+        "put": {
+          "summary": "Atualizar um curso pelo ID",
+          "description": "Atualiza um curso existente com os dados fornecidos",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID do curso a ser atualizado",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Curso atualizado com sucesso"
+            },
+            "400": {
+              "description": "Requisição inválida"
+            },
+            "404": {
+              "description": "Curso não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CursoInput"
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar um curso pelo ID",
+          "description": "Remove um curso existente pelo ID fornecido",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID do curso a ser deletado",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Curso deletado com sucesso"
+            },
+            "404": {
+              "description": "Curso não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      }
+    },
     "/estudante": {
       "get": {
         "summary": "Listar todos os estudantes",
@@ -127,109 +230,6 @@
             },
             "404": {
               "description": "Estudante não encontrado"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
-            }
-          }
-        }
-      }
-    },
-    "/curso": {
-      "get": {
-        "summary": "Listar todos os cursos",
-        "description": "Retorna uma lista de todos os cursos",
-        "responses": {
-          "200": {
-            "description": "Lista de cursos recuperada com sucesso"
-          }
-        }
-      },
-      "post": {
-        "summary": "Criar um novo curso",
-        "description": "Cria um novo curso com os dados fornecidos",
-        "responses": {
-          "201": {
-            "description": "Curso criado com sucesso"
-          },
-          "400": {
-            "description": "Requisição inválida"
-          },
-          "500": {
-            "description": "Erro interno do servidor"
-          }
-        },
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CursoInput"
-              }
-            }
-          }
-        }
-      },
-      "/{id}": {
-        "put": {
-          "summary": "Atualizar um curso pelo ID",
-          "description": "Atualiza um curso existente com os dados fornecidos",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID do curso a ser atualizado",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Curso atualizado com sucesso"
-            },
-            "400": {
-              "description": "Requisição inválida"
-            },
-            "404": {
-              "description": "Curso não encontrado"
-            },
-            "500": {
-              "description": "Erro interno do servidor"
-            }
-          },
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CursoInput"
-                }
-              }
-            }
-          }
-        },
-        "delete": {
-          "summary": "Deletar um curso pelo ID",
-          "description": "Remove um curso existente pelo ID fornecido",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "required": true,
-              "description": "ID do curso a ser deletado",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Curso deletado com sucesso"
-            },
-            "404": {
-              "description": "Curso não encontrado"
             },
             "500": {
               "description": "Erro interno do servidor"
@@ -461,7 +461,7 @@
         "type": "object",
         "properties": {
           "cpf": {
-            "type": "string",
+            "type": "123.456.789-10",
             "description": "CPF do estudante"
           },
           "nome": {
@@ -473,7 +473,7 @@
             "description": "ID do curso associado ao estudante"
           },
           "matricula": {
-            "type": "string",
+            "type": "1234-5",
             "description": "Matrícula do estudante"
           }
         },

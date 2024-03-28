@@ -17,7 +17,7 @@ export class Estudante extends BaseEntity {
   @ManyToOne(() => Curso, curso => curso.estudantes)
   curso!: Curso;
 
-  @Column({ type: "varchar", length: 20, unique: true })
+  @Column({ type: "varchar", length: 5, unique: true })
   matricula!: string;
 
   @OneToMany(() => Atividade, atividade => atividade.estudante)
