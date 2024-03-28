@@ -6,9 +6,10 @@ import { Tarefa } from "./task";
 export class Atividade extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
+  nome: any;
 
   @ManyToOne(() => Tarefa, tarefa => tarefa.atividades)
-  tarefa!: Tarefa;
+  tarefa!: Tarefa[];
 
   @ManyToOne(() => Estudante, estudante => estudante.atividades)
   estudante!: Estudante;
@@ -17,15 +18,14 @@ export class Atividade extends BaseEntity {
   data!: Date;
 
   @Column({ type: "time" })
-  horaAgendamentoInicio!: string;
+  horaAgendamentoInicio!: Date;
 
   @Column({ type: "time" })
-  horaAgendamentoTermino!: string;
+  horaAgendamentoTermino!: Date;
 
   @Column({ type: "time", nullable: true })
-  horaInicio!: string;
+  horaInicio!: Date;
 
   @Column({ type: "time", nullable: true })
-  horaTermino!: string;
-  nome: any;
+  horaTermino!: Date;
 }

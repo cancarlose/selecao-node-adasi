@@ -7,16 +7,17 @@ export const createCursoController = async (req: Request, res: Response) => {
     const novoCurso = await Curso.create({ nome });
     res.status(201).json(novoCurso);
   } catch (error) {
-    res.status(400).json({ erro: "Erro ao criar o curso" });
+    res.status(500).json({ erro: "Erro ao criar o curso!" });
+    console.log(error);
   }
 };
 
-export const listCursosController = async (req: Request, res: Response) => {
+export const listCursosController = async (_req: Request, res: Response) => {
   try {
     const cursos = await Curso.find();
-    res.json(cursos);
+    res.status(200).json(cursos);
   } catch (error) {
-    res.status(500).json({ erro: "Curso não encontrado" });
+    res.status(404).json({ erro: "Não há cursos cadastrados!" });
   }
 };
 
@@ -30,9 +31,9 @@ export const updateCursoController = async (req: Request, res: Response) => {
     }
     curso.nome = nome;
     await curso.save();
-    res.json(curso);
+    res.status(200).json(curso);
   } catch (error) {
-    res.status(400).json({ error });
+    res.status(400).json({ erro: "Erro ao tentar editar" });
   }
 };
 
@@ -44,7 +45,7 @@ export const deleteCursoController = async (req: Request, res: Response) => {
       return res.status(404).json({ erro: "Curso não encontrado" });
     }
     await curso.remove();
-    res.json({ mensagem: "Curso deletado com sucesso" });
+    res.status(200).json({ mensagem: "Curso deletado com sucesso" });
   } catch (error) {
     res.status(400).json({ erro: "Erro ao tentar excluir" });
   }

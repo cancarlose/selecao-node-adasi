@@ -7,16 +7,16 @@ export const createAtividadeController = async (req: Request, res: Response) => 
     const novaAtividade = await Atividade.create({ nome });
     res.status(201).json(novaAtividade);
   } catch (error) {
-    res.status(400).json({ erro: "Erro ao criar a atividade" });
+    res.status(500).json({ erro: "Erro ao criar a atividade!" });
   }
 };
 
-export const listAtividadesController = async (req: Request, res: Response) => {
+export const listAtividadesController = async (_req: Request, res: Response) => {
   try {
     const atividades = await Atividade.find();
-    res.json(atividades);
+    res.status(200).json(atividades);
   } catch (error) {
-    res.status(500).json({ erro: "Atividade não encontrada" });
+    res.status(404).json({ erro: "Não há atividades!" });
   }
 };
 
@@ -24,15 +24,15 @@ export const updateAtividadeController = async (req: Request, res: Response) => 
   try {
     const { id } = req.params;
     const { nome } = req.body;
-    const atividade = await Atividade.findOne({ where: { id } });
+    const atividade = await Atividade.findOne({ where: { id } })
     if (!atividade) {
       return res.status(404).json({ erro: "Atividade não encontrada" });
     }
     atividade.nome = nome;
     await atividade.save();
-    res.json(atividade);
+    res.status(200).json(atividade);
   } catch (error) {
-    res.status(400).json({ error });
+    res.status(400).json({ erro: "Erro ao tentar editar" });
   }
 };
 
@@ -44,7 +44,7 @@ export const deleteAtividadeController = async (req: Request, res: Response) => 
       return res.status(404).json({ erro: "Atividade não encontrada" });
     }
     await atividade.remove();
-    res.json({ mensagem: "Atividade deletada com sucesso" });
+    res.status(200).json({ mensagem: "Atividade deletada com sucesso" });
   } catch (error) {
     res.status(400).json({ erro: "Erro ao tentar excluir" });
   }

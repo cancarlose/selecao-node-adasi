@@ -13,17 +13,17 @@ export const createEstudanteController = async (req: Request, res: Response) => 
     res.status(201).json(novoEstudante);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ erro: "Erro ao criar estudante" });
+    res.status(500).json({ erro: "Erro ao criar estudante!" });
   }
 };
 
-export const listEstudantesController = async (req: Request, res: Response) => {
+export const listEstudantesController = async (_req: Request, res: Response) => {
   try {
     const estudantes = await Estudante.find({ relations: ['curso'] });
-    res.json(estudantes);
+    res.status(200).json(estudantes);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ erro: "Erro ao listar estudantes" });
+    res.status(404).json({ erro: "Não há estudantes!" });
   }
 };
 
@@ -39,10 +39,10 @@ export const updateEstudanteController = async (req: Request, res: Response) => 
     estudante.nome = nome;
     estudante.matricula = matricula;
     await estudante.save();
-    res.json(estudante);
+    res.status(200).json(estudante);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ erro: "Erro ao atualizar estudante" });
+    res.status(400).json({ erro: "Erro ao tentar editar" });
   }
 };
 
@@ -54,9 +54,9 @@ export const deleteEstudanteController = async (req: Request, res: Response) => 
       return res.status(404).json({ erro: 'Estudante não encontrado' });
     }
     await estudante.remove();
-    res.json({ mensagem: 'Estudante deletado com sucesso' });
+    res.status(200).json({ mensagem: 'Estudante deletado com sucesso' });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ erro: "Erro ao deletar estudante" });
+    res.status(400).json({ erro: "Erro ao tentar excluir" });
   }
 };

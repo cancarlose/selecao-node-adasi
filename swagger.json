@@ -15,6 +15,124 @@
             "description": "Lista de estudantes recuperada com sucesso"
           }
         }
+      },
+      "post": {
+        "summary": "Criar um novo estudante",
+        "description": "Cria um novo estudante com os dados fornecidos",
+        "responses": {
+          "201": {
+            "description": "Estudante criado com sucesso"
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EstudanteInput"
+              }
+            }
+          }
+        }
+      },
+      "/{id}": {
+        "get": {
+          "summary": "Buscar um estudante pelo ID",
+          "description": "Retorna um estudante pelo ID fornecido",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID do estudante a ser buscado",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Estudante encontrado com sucesso"
+            },
+            "404": {
+              "description": "Estudante não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        },
+        "put": {
+          "summary": "Atualizar um estudante pelo ID",
+          "description": "Atualiza um estudante existente com os dados fornecidos",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID do estudante a ser atualizado",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Estudante atualizado com sucesso"
+            },
+            "400": {
+              "description": "Requisição inválida"
+            },
+            "404": {
+              "description": "Estudante não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EstudanteInput"
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar um estudante pelo ID",
+          "description": "Remove um estudante existente pelo ID fornecido",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID do estudante a ser deletado",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Estudante deletado com sucesso"
+            },
+            "404": {
+              "description": "Estudante não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
       }
     },
     "/curso": {
@@ -24,6 +142,98 @@
         "responses": {
           "200": {
             "description": "Lista de cursos recuperada com sucesso"
+          }
+        }
+      },
+      "post": {
+        "summary": "Criar um novo curso",
+        "description": "Cria um novo curso com os dados fornecidos",
+        "responses": {
+          "201": {
+            "description": "Curso criado com sucesso"
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CursoInput"
+              }
+            }
+          }
+        }
+      },
+      "/{id}": {
+        "put": {
+          "summary": "Atualizar um curso pelo ID",
+          "description": "Atualiza um curso existente com os dados fornecidos",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID do curso a ser atualizado",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Curso atualizado com sucesso"
+            },
+            "400": {
+              "description": "Requisição inválida"
+            },
+            "404": {
+              "description": "Curso não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CursoInput"
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar um curso pelo ID",
+          "description": "Remove um curso existente pelo ID fornecido",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID do curso a ser deletado",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Curso deletado com sucesso"
+            },
+            "404": {
+              "description": "Curso não encontrado"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
           }
         }
       }
@@ -37,6 +247,98 @@
             "description": "Lista de tarefas recuperada com sucesso"
           }
         }
+      },
+      "post": {
+        "summary": "Criar uma nova tarefa",
+        "description": "Cria uma nova tarefa com os dados fornecidos",
+        "responses": {
+          "201": {
+            "description": "Tarefa criada com sucesso"
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TarefaInput"
+              }
+            }
+          }
+        }
+      },
+      "/{id}": {
+        "put": {
+          "summary": "Atualizar uma tarefa pelo ID",
+          "description": "Atualiza uma tarefa existente com os dados fornecidos",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID da tarefa a ser atualizada",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Tarefa atualizada com sucesso"
+            },
+            "400": {
+              "description": "Requisição inválida"
+            },
+            "404": {
+              "description": "Tarefa não encontrada"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TarefaInput"
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar uma tarefa pelo ID",
+          "description": "Remove uma tarefa existente pelo ID fornecido",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID da tarefa a ser deletada",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Tarefa deletada com sucesso"
+            },
+            "404": {
+              "description": "Tarefa não encontrada"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
       }
     },
     "/atividade": {
@@ -48,6 +350,173 @@
             "description": "Lista de atividades recuperada com sucesso"
           }
         }
+      },
+      "post": {
+        "summary": "Criar uma nova atividade",
+        "description": "Cria uma nova atividade com os dados fornecidos",
+        "responses": {
+          "201": {
+            "description": "Atividade criada com sucesso"
+          },
+          "400": {
+            "description": "Requisição inválida"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AtividadeInput"
+              }
+            }
+          }
+        }
+      },
+      "/{id}": {
+        "put": {
+          "summary": "Atualizar uma atividade pelo ID",
+          "description": "Atualiza uma atividade existente com os dados fornecidos",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID da atividade a ser atualizada",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Atividade atualizada com sucesso"
+            },
+            "400": {
+              "description": "Requisição inválida"
+            },
+            "404": {
+              "description": "Atividade não encontrada"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          },
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AtividadeInput"
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Deletar uma atividade pelo ID",
+          "description": "Remove uma atividade existente pelo ID fornecido",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "description": "ID da atividade a ser deletada",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Atividade deletada com sucesso"
+            },
+            "404": {
+              "description": "Atividade não encontrada"
+            },
+            "500": {
+              "description": "Erro interno do servidor"
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CursoInput": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "description": "Nome do curso"
+          }
+        },
+        "required": ["nome"]
+      },
+      "EstudanteInput": {
+        "type": "object",
+        "properties": {
+          "cpf": {
+            "type": "string",
+            "description": "CPF do estudante"
+          },
+          "nome": {
+            "type": "string",
+            "description": "Nome do estudante"
+          },
+          "curso": {
+            "type": "string",
+            "description": "ID do curso associado ao estudante"
+          },
+          "matricula": {
+            "type": "string",
+            "description": "Matrícula do estudante"
+          }
+        },
+        "required": ["cpf", "nome", "curso", "matricula"]
+      },
+      "TarefaInput": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "description": "Nome da tarefa"
+          }
+        },
+        "required": ["nome"]
+      },
+      "AtividadeInput": {
+        "type": "object",
+        "properties": {
+          "tarefaId": {
+            "type": "string",
+            "description": "ID da tarefa associada à atividade"
+          },
+          "estudanteId": {
+            "type": "string",
+            "description": "ID do estudante associado à atividade"
+          },
+          "data": {
+            "type": "string",
+            "format": "date",
+            "description": "Data da atividade"
+          },
+          "horaAgendamentoInicio": {
+            "type": "string",
+            "format": "time",
+            "description": "Hora de início agendada da atividade"
+          },
+          "horaAgendamentoTermino": {
+            "type": "string",
+            "format": "time",
+            "description": "Hora de término agendada da atividade"
+          }
+        },
+        "required": ["tarefaId", "estudanteId", "data", "horaAgendamentoInicio", "horaAgendamentoTermino"]
       }
     }
   }

@@ -1,5 +1,4 @@
 import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-
 import { Atividade } from "./activity";
 import { Curso } from "./course";
 

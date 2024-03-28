@@ -3,7 +3,6 @@ import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm
 export class Students1711501252564 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        // Criar a tabela Estudante
         await queryRunner.createTable(new Table({
             name: "Estudante",
             columns: [
@@ -37,7 +36,6 @@ export class Students1711501252564 implements MigrationInterface {
             ]
         }));
 
-        // Criar a chave estrangeira para a coluna "cursoId"
         await queryRunner.createForeignKey("Estudante", new TableForeignKey({
             columnNames: ["cursoId"],
             referencedTableName: "Curso",
@@ -48,10 +46,9 @@ export class Students1711501252564 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        // Excluir a chave estrangeira
+
         await queryRunner.dropForeignKey("Estudante", "cursoId");
 
-        // Excluir a tabela Estudante
         await queryRunner.dropTable("Estudante");
     }
 

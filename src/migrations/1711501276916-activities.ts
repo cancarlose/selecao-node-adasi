@@ -3,7 +3,6 @@ import { MigrationInterface, QueryRunner, Table } from "typeorm";
 export class Activities1711501276916 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        // Criar a tabela Atividade
         await queryRunner.createTable(new Table({
             name: "Atividade",
             columns: [
@@ -64,7 +63,7 @@ export class Activities1711501276916 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        // Excluir a tabela Atividade
+
         await queryRunner.dropTable("Atividade");
     }
 

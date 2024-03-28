@@ -7,16 +7,16 @@ export const createTarefaController = async (req: Request, res: Response) => {
     const novaTarefa = await Tarefa.create({ nome });
     res.status(201).json(novaTarefa);
   } catch (error) {
-    res.status(400).json({ erro: "Erro ao criar a tarefa" });
+    res.status(500).json({ erro: "Erro ao criar a tarefa!" });
   }
 };
 
-export const listTarefasController = async (req: Request, res: Response) => {
+export const listTarefasController = async (_req: Request, res: Response) => {
   try {
     const tarefas = await Tarefa.find();
-    res.json(tarefas);
+    res.status(200).json(tarefas);
   } catch (error) {
-    res.status(500).json({ erro: "Tarefa não encontrada" });
+    res.status(404).json({ erro: "Não há tarefas!" });
   }
 };
 
@@ -30,9 +30,9 @@ export const updateTarefaController = async (req: Request, res: Response) => {
     }
     tarefa.nome = nome;
     await tarefa.save();
-    res.json(tarefa);
+    res.status(200).json(tarefa);
   } catch (error) {
-    res.status(400).json({ error });
+    res.status(400).json({ erro: "Erro ao tentar editar" });
   }
 };
 
@@ -44,7 +44,7 @@ export const deleteTarefaController = async (req: Request, res: Response) => {
       return res.status(404).json({ erro: "Tarefa não encontrada" });
     }
     await tarefa.remove();
-    res.json({ mensagem: "Tarefa deletada com sucesso" });
+    res.status(200).json({ mensagem: "Tarefa deletada com sucesso" });
   } catch (error) {
     res.status(400).json({ erro: "Erro ao tentar excluir" });
   }

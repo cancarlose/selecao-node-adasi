@@ -33,7 +33,7 @@ Certifique-se de ter o Node.js instalado. Siga a documentação para realizar os
 
 ### Testes para a API RESTful
 
-Este repositório inclui conjuntos de testes em Node.js que podem ser usados para testar uma API RESTful. Os testes foram escritos usando a biblioteca Jest do Node.js e a biblioteca Supertest para fazer requisições HTTP para a API.
+Este repositório inclui conjuntos de testes em Node.js que podem ser usados para testar uma API RESTful. Os testes foram escritos usando a biblioteca Express do Node.js para fazer requisições HTTP para a API.
 
 ### Estrutura dos Testes
 
