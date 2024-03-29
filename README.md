@@ -77,7 +77,7 @@ Este endpoint retorna uma lista de todos os estudantes registrados no sistema.
 
 #### Parâmetros
 
-"/"
+"/estudante/"
 
 ### Respostas
 
