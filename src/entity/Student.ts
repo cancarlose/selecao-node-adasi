@@ -1,10 +1,10 @@
-import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Atividade } from "./activity";
-import { Curso } from "./course";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Atividade } from "./Activity";
+import { Curso } from "./Course";
 
 
 @Entity("Estudante")
-export class Estudante extends BaseEntity {
+export class Estudante {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 

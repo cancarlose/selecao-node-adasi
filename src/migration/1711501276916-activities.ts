@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
 export class Activities1711501276916 implements MigrationInterface {
 
@@ -42,29 +42,28 @@ export class Activities1711501276916 implements MigrationInterface {
                     type: "time",
                     isNullable: true
                 }
-            ],
-            foreignKeys: [
-                {
-                    columnNames: ["tarefaId"],
-                    referencedTableName: "Tarefa",
-                    referencedColumnNames: ["id"],
-                    onDelete: "CASCADE",
-                    onUpdate: "CASCADE"
-                },
-                {
-                    columnNames: ["estudanteId"],
-                    referencedTableName: "Estudante",
-                    referencedColumnNames: ["id"],
-                    onDelete: "CASCADE",
-                    onUpdate: "CASCADE"
-                }
             ]
+        }));
+
+        await queryRunner.createForeignKey("Atividade", new TableForeignKey({
+            columnNames: ["tarefaId"],
+            referencedTableName: "Tarefa",
+            referencedColumnNames: ["id"],
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE"
+        }));
+
+        await queryRunner.createForeignKey("Atividade", new TableForeignKey({
+            columnNames: ["estudanteId"],
+            referencedTableName: "Estudante",
+            referencedColumnNames: ["id"],
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE"
         }));
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-
         await queryRunner.dropTable("Atividade");
     }
-
 }
+

@@ -1,8 +1,8 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Estudante } from "./student";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Estudante } from "./Student";
 
 @Entity("Curso")
-export class Curso extends BaseEntity {
+export class Curso {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 

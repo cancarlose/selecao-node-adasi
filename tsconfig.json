@@ -1,27 +1,15 @@
 {
-  "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
-    "target": "es6",
-    "module": "commonjs",
-    "strict": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  },
-  "include": ["src/**/*.ts", 
-  "src/app.mjs", 
-  "src/**/*.ts",
-  "src/__tests__/**/*.ts", 
-  "src/config/config.ts", 
-  "src/migrations/1711501252564-students.ts", 
-  "src/migrations/1711501276916-activities.ts", 
-  "src/migrations/1711501276915-tasks.ts", 
-  "src/migrations/1711501252563-courses.ts"],
-  "exclude": ["node_modules"]
+   "compilerOptions": {
+      "lib": [
+         "es5",
+         "es6"
+      ],
+      "target": "es5",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "./build",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "sourceMap": true
+   }
 }
