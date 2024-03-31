@@ -10,7 +10,7 @@ O projeto está organizado em pastas e arquivos específicos, cada uma com uma r
 - `controllers`: Controladores para lidar com as requisições HTTP.
 - `entity`: Definição do modelo de dados da entidade Estudante, Curso, Atividade, Tarefa.
 - `migration`: Pasta de migrações dos dados para o banco de dados.
-- `data-source.ts`: Ponto de conexão com o banco de dados, atravez do `.env`.
+- `data-source.ts`: Ponto de conexão com o banco de dados, atraves do `.env`.
 - `index.ts`: Ponto de entrada da aplicação.
 - `routes.ts`: Definição de rotas da API.
 
