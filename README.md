@@ -23,11 +23,12 @@ O arquivo `src/index.ts` e `.env` contém as configurações do banco de dados p
 Certifique-se de ter o Yarn instalado.
 
 1. Navegue até o diretório do projeto no terminal.
-3. Execute o Typeorm: `yarn add typeorm pg` 
-2. Execute o comando para inicializar o Yarn: `yarn`.
-4. Execute o início do servidor com `yarn start`. Isso abrirá o servidor na porta 3000.
-5. Acesse o aplicativo em seu navegador, geralmente em `http://localhost:3000`.
-6. Acesse com o Swagger UI, passando o diretório: `http://localhost:3000/api-docs/#/`.
+2. Execute o Typeorm: `yarn add typeorm pg` 
+3. Execute as migrations `yarn typeorm migration:run`.
+4. Execute o comando para inicializar o Yarn: `yarn`.
+5. Execute o início do servidor com `yarn start`. Isso abrirá o servidor na porta 3000.
+6. Acesse o aplicativo em seu navegador, geralmente em `http://localhost:3000`.
+7. Acesse com o Swagger UI, passando o diretório: `http://localhost:3000/api-docs/#/`.
 
 ## Testando a Aplicação
 
