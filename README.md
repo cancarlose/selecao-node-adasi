@@ -88,14 +88,14 @@ Este endpoint retorna uma lista de todos os estudantes registrados no sistema.
   ```json
   [
     {
-      "id": 1,
+      "id": "96108a4a-3c03-42aa-895e-8074df6feb2c",
       "nome": "João",
       "cpf": "75481274963",
       "curso": "pedagogia",
       "matricula": "95741"
     },
     {
-      "id": 2,
+      "id": "84b1d415-f9b1-47c1-84ae-be8502821fa1",
       "nome": "Maria",
       "cpf": "52148796548",
       "curso": "psicologia",
