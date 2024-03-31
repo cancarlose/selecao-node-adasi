@@ -4,17 +4,19 @@ Bem-vindo à documentação da API da seleção node adasi! Esta API foi desenvo
 
 ## Estrutura do Projeto
 
-O projeto está organizado em pastas específicas, cada uma com uma responsabilidade distinta. Abaixo está uma visão geral das pastas principais:
+O projeto está organizado em pastas e arquivos específicos, cada uma com uma responsabilidade distinta. Abaixo está uma visão geral das pastas principais:
 
-- `config`: Configurações do banco de dados e da aplicação.
+- `src`: Pasta source do projeto.
 - `controllers`: Controladores para lidar com as requisições HTTP.
-- `models`: Definição do modelo de dados da entidade Estudante, Curso, Atividade, Tarefa.
-- `routes`: Definição de rotas da API.
-- `app.ts`: Ponto de entrada da aplicação.
+- `entity`: Definição do modelo de dados da entidade Estudante, Curso, Atividade, Tarefa.
+- `migration`: Pasta de migrações dos dados para o banco de dados.
+- `data-source.ts`: Ponto de conexão com o banco de dados, atravez do `.env`.
+- `index.ts`: Ponto de entrada da aplicação.
+- `routes.ts`: Definição de rotas da API.
 
 ## Configuração do Banco de Dados
 
-O arquivo `src/config/config.ts` e `.env` contém as configurações do banco de dados para diferentes ambientes (desenvolvimento, teste e produção). Atualmente, está configurado para usar o PostgreSQL.
+O arquivo `src/index.ts` e `.env` contém as configurações do banco de dados para diferentes ambientes (desenvolvimento, teste e produção). Atualmente, está configurado para usar o PostgreSQL.
 
 ## Rodando a Aplicação com Yarn
 
@@ -22,14 +24,14 @@ Certifique-se de ter o Yarn instalado.
 
 1. Navegue até o diretório do projeto no terminal.
 3. Execute o Typeorm: `yarn add typeorm pg` 
-2. Execute o comando para inicializar o Yarn: `yarn init` `yarn`.
+2. Execute o comando para inicializar o Yarn: `yarn`.
 4. Execute o início do servidor com `yarn start`. Isso abrirá o servidor na porta 3000.
 5. Acesse o aplicativo em seu navegador, geralmente em `http://localhost:3000`.
-6. Acesse com uma ferramenta de desenvolvimento de API, passando o diretório: `http://localhost:3000/api-docs/#/`, para acessar o swagger.
+6. Acesse com o Swagger UI, passando o diretório: `http://localhost:3000/api-docs/#/`.
 
 ## Testando a Aplicação
 
-Certifique-se de ter o Node.js instalado. Siga a documentação para realizar os testes:
+Certifique-se de ter o Node.js, Express e TypeScript instalados. Siga a documentação para realizar os testes:
 
 ### Testes para a API RESTful
 
@@ -77,7 +79,7 @@ Este endpoint retorna uma lista de todos os estudantes registrados no sistema.
 
 #### Parâmetros
 
-"/"
+"/estudante"
 
 ### Respostas
 
