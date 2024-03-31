@@ -27,7 +27,7 @@ Certifique-se de ter o Yarn instalado.
 3. Execute o Typeorm: `yarn add typeorm pg` 
 4. Execute as migrations `yarn typeorm migration:run`.
 5. Execute o início do servidor com `yarn start`. Isso abrirá o servidor na porta 3000.
-6. Acesse o aplicativo em seu navegador, geralmente em `http://localhost:3000`.
+6. Acesse o aplicativo em seu navegador, geralmente em `http://localhost:3000`, ou.
 7. Acesse com o Swagger UI, passando o diretório: `http://localhost:3000/api-docs/#/`.
 
 ## Testando a Aplicação
