@@ -28,30 +28,11 @@ export class Atividade {
 
   @Column({ type: "time", nullable: true })
   horaTermino!: string;
-  
+
   @BeforeInsert()
   @BeforeUpdate()
-  validarAtividade() {
-    const tolerancia = 15 * 60 * 1000;
-    const duracaoMaxima = 6 * 60 * 60 * 1000;
-
-    const horaInicioMs = new Date(this.horaInicio).getTime()
-    const horaTerminoMs = new Date(this.horaTermino).getTime()
-
-    const duracao = horaTerminoMs - horaInicioMs;
-    if (duracao > duracaoMaxima) {
-      throw new Error("A duração da atividade não pode ultrapassar 6 horas.");
-    }
-
-    if (horaTerminoMs < horaInicioMs) {
-      throw new Error("Data e hora de término não podem ser anteriores à data e hora de início.");
-    }
-
-    const horaAtualMs = new Date().getTime();
-    const diferencaInicio = Math.abs(horaInicioMs - horaAtualMs);
-    if (diferencaInicio > tolerancia) { 
-      throw new Error("A atividade só pode ser iniciada com uma tolerância de 15 minutos para mais ou para menos.");
-    }   
+    formatarData() {
+      this.data = this.data.split('.').reverse().join('-');
   }
 }
 

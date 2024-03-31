@@ -518,9 +518,19 @@
             "type": "string",
             "format": "time",
             "description": "Hora de término agendada da atividade"
+          },
+          "horaInicio": {
+            "type": "string",
+            "format": "time",
+            "description": "Hora de término agendada da atividade"
+          },
+          "horaTermino": {
+            "type": "string",
+            "format": "time",
+            "description": "Hora de término agendada da atividade"
           }
         },
-        "required": ["tarefaId", "estudanteId", "data", "horaAgendamentoInicio", "horaAgendamentoTermino"]
+        "required": ["tarefaId", "estudanteId", "data", "horaAgendamentoInicio", "horaAgendamentoTermino", "horaInicio", "horaTermino"]
       }
     }
   }

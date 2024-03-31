@@ -11,6 +11,7 @@ export class ActivityController {
   private tarefaRepository = AppDataSource.getRepository(Tarefa)
 
   private atividadeRepository = AppDataSource.getRepository(Atividade)
+  
 
     async all(request: Request, response: Response, next: NextFunction) {
 
@@ -32,81 +33,72 @@ export class ActivityController {
           }
       }
           return atividade
-  }
+    }
 
     async save(request: Request, response: Response, next: NextFunction) {
         const { tarefaId, estudanteId, data, horaAgendamentoInicio, horaAgendamentoTermino, horaInicio, horaTermino } = request.body
+    
+        if (horaAgendamentoTermino && horaAgendamentoInicio) {
+            const horaInicioDate = new Date(`1970-01-01T${horaAgendamentoInicio}`);
+            const horaTerminoDate = new Date(`1970-01-01T${horaAgendamentoTermino}`);
+            
+            const diferencaEmMilissegundos = horaTerminoDate.getTime() - horaInicioDate.getTime();
+            const diferencaEmMinutos = diferencaEmMilissegundos / (1000 * 60);
+            
+            if (diferencaEmMinutos > 6 * 60) {
+                response.status(404);
+                return {
+                    message: "A duração da atividade não pode ultrapassar 6 horas."
+                };
+            }
+            
+            const dataHoraInicio = new Date(`${data}T${horaInicio}`);
+            const dataHoraTermino = new Date(`${data}T${horaTermino}`);
+            
+            if (dataHoraTermino < dataHoraInicio) {
+                response.status(404);
+                return {
+                    message: "A hora de término não podem ser anteriores à data e hora de início."
+                };
+            }
+            
+            const diferencaMilissegundos = dataHoraInicio.getTime() - horaInicioDate.getTime();
+            const diferencaMinutos = Math.abs(diferencaMilissegundos / (1000 * 60));
 
-        interface Atividade {
-            horaInicioAgendada: any
-            horaInicio: Date;
-            horaTermino: Date;
-            horaAgendamentoInicio?: Date;
-            horaAgendamentoTermino?: Date;
-            horaInicioReal?: Date;
+            if (diferencaMinutos > 15) {
+                response.status(404)
+                return {
+                    message: "A atividade só pode ser iniciada com uma tolerância de 15 minutos para mais ou para menos."
+                }
+            }
+    
+
+            const findEstudante = await this.estudanteRepository.findOne({
+                where: { id: estudanteId }
+            });
+
+            const findTarefa = await this.tarefaRepository.findOne({
+                where: { id: tarefaId }
+            });
+        
+            const atividade = Object.assign(new Atividade(), {
+                tarefaId,
+                estudanteId,
+                data,
+                horaAgendamentoInicio,
+                horaAgendamentoTermino,
+                horaInicio,
+                horaTermino
+            });
+        
+            response.status(201);
+            return this.atividadeRepository.save(atividade);
         }
-        
-        class AtividadeService {
-            validarDuracao(atividade: Atividade): boolean {
-                const duracaoMax = atividade.horaTermino.getTime() - atividade.horaInicio.getTime()
-                const duracaoHoras = duracaoMax / (1000 * 60 * 60)
-        
-                return duracaoHoras <= 6
-            }
-        
-            validarDataHora(atividade: Atividade): boolean {
-                return atividade.horaTermino > atividade.horaInicio
-            }
-        
-            validarToleranciaInicio(atividade: Atividade): boolean {
-                const diffMs = Math.abs((atividade.horaInicioReal || atividade.horaInicio).getTime() - atividade.horaInicioAgendada.getTime())
-                const tempoMin = diffMs / (1000 * 60)
-        
-                return tempoMin <= 15
-            }
-        
-            validar(atividade: Atividade): string | null {
-                if (!this.validarDuracao(atividade)) {
-                    return "A duração da atividade não pode ultrapassar 6 horas."
-                }
-        
-                if (!this.validarDataHora(atividade)) {
-                    return "A data e hora de término não podem ser anteriores à data e hora de início."
-                }
-        
-                if (!this.validarToleranciaInicio(atividade)) {
-                    return "A atividade só pode ser iniciada com uma tolerância de 15 minutos para mais ou para menos."
-                }
-        
-                return
-            }
-        }
-
-        const findEstudante = await this.estudanteRepository.findOne({
-        where: { id: estudanteId }
-        })
-
-        const findTarefa = await this.tarefaRepository.findOne({
-        where: { id: tarefaId }
-        })
-
-        const atividade = Object.assign(new Atividade(), {
-            tarefaId,
-            estudanteId,
-            data,
-            horaAgendamentoInicio,
-            horaAgendamentoTermino,
-            horaInicio,
-            horaTermino
-        })
-
-        response.status(201)
-        return this.atividadeRepository.save(atividade)
     }
 
     async update(request: Request, response: Response, next: NextFunction) {
         const id = request.params.id
-        const { tarefaId, estudanteId, data, horaAgendamentoInicio, horaAgendamentoTermino, horaInicio, horaTermino } = request.body
+        const { tarefa, estudante, data, horaAgendamentoInicio, horaAgendamentoTermino, horaInicio, horaTermino } = request.body
 
         let atividadeToUpdate = await this.atividadeRepository.findOne({
             where: { id }
@@ -119,9 +111,9 @@ export class ActivityController {
             }
         }
 
-        const atividade = Object.assign(new Atividade(), {
-            tarefaId,
-            estudanteId,
+        this.atividadeRepository.merge(atividadeToUpdate, {
+            tarefa,
+            estudante,
             data,
             horaAgendamentoInicio,
             horaAgendamentoTermino,
@@ -133,7 +125,7 @@ export class ActivityController {
 
         response.status(200)
         return "Atividade foi atualizada!"
-   }
+    }
 
     async remove(request: Request, response: Response) {
         const id = request.params.id
@@ -153,5 +145,6 @@ export class ActivityController {
     
         response.status(200)
         return "Atividade foi excluido com sucesso!"    
-       }
+    }
 }
+
